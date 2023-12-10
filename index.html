@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>--->>Magda Arques<<---</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Xanh+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="https://unpkg.com/hydra-synth"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing:border-box;
+        }
+        img{
+            width: 100%;
+            height: auto;
+        }
+        ul{
+            display: flex;
+            flex-direction: column;
+        }
+        ul li{
+            list-style-type: none;
+            line-height: 2.2rem;
+        }
+        ul li a{
+            color: white;
+            background-color: blue;
+            padding: .1rem .2rem;
+            font-size: 2rem;
+        }
+        ul li a:hover{
+            color:white;
+            background-color: black;
+        }
+        body{
+            font-family: 'Xanh Mono', monospace;
+        }
+        a{
+            text-decoration: none;
+        }
+        #container{
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        /*LOGO*/
+        header{
+            z-index: 40;
+            position: fixed;
+            width: 100%;
+            display: flex;
+            text-align: center;
+            align-content: center;
+            justify-content: right;
+            font-size: 1.6em;
+        }
+        header hgroup:last-child{
+            padding: 0 2em 0 0;
+        }
+        a>header{
+            color: black;
+        }
+        #nom{
+            z-index: 41;
+            padding: 1.5em 0 0 0;
+        }
+        h1,h2,h3,h4,h5,h6{
+            font-style: italic;
+            color: color;
+            padding: .2em .2em;
+            float: left;
+        }
+       /*MENU*/
+        form{
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin: .2em;
+            padding: 1em;
+            z-index: 42;
+
+        }
+        form select{
+            border: none;
+            overflow: hidden;
+            background: white;
+            /* border:none; */
+            font-family: 'Fragment Mono', monospace;    
+            font-size: 1em;
+            letter-spacing: .08em;
+            width: 18em;
+            height: auto;
+            position: absolute;
+        }
+        
+        /* #intro{
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 5;
+        }
+        #intro img{
+            width: 30vw;
+            height: auto;
+        } */
+        .wrap{
+            position: relative;
+            bottom: 0;
+            right: 0;
+            top:0;
+            left: 25vw;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 75vw;
+            padding: 1em;
+            background-color: white;
+            z-index: 10;
+        }
+        /* .wrap, .hola{
+            background-color: red;
+        } */
+        .hola:hover{
+            background-color: none;
+        }
+        /* #texxt{
+           
+
+       } */
+        .wrap h2{
+            padding: 2em 0 .8em 0;
+            width: 50vw;
+            z-index: 18;
+            font-size: 4em;
+            font-family: 'Xanh Mono', monospace;
+        }
+        .wrap h3{
+            font-size: 1.5em;
+        }
+        .project{
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            align-items: left;
+            justify-content: left;
+        }
+        .wrap p{
+            width: 50vw;
+            font-size: 1.1rem;
+            padding: 0 0 1.2rem 0;
+            font-family: 'Fragment Mono', monospace;  
+        }
+        .hola p:first-child{
+            /* text-indent: 4em; */
+            margin-top: -2em;
+            float: left;
+		}        
+        .hola #about_pc:first-child{
+            text-indent: 18vw;
+        }
+        .hola #about_pe:first-child{
+            text-indent: 10vw;
+        }
+        .hola #about_pcast:first-child{
+            text-indent: 18.5vw;
+        } 
+        .hola p a{
+            padding: .1em;
+            background-color: blue;
+            color: white;
+        }
+        .hola p a:hover{
+            padding: .1em;
+            background-color: black;
+            color: white;
+        }
+        footer{
+            padding: 3em 0 0 0;
+        }
+        footer p{
+            float: left;
+            text-indent: 0;
+            font-family: 'Xanh Mono', monospace;
+            font-weight: 400;
+            font-style: italic;
+        }
+        section{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        section h4{
+            width: 33%;
+            padding: 0 0 2em 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+        
+        .col_3 .cat, .col_3 .cast, .col_3 .eng{
+            font-family: 'Fragment Mono', monospace; 
+        }
+        section{
+            display: flex;
+            flex-basis: 100%;
+            width: 100%;
+        }
+        section>div{
+            padding: 2em 1em .5em 0;
+            display: flex;
+            flex-direction: column; 
+        }
+
+        .col_3 p{
+            inline-size: 100%;
+            font-size: 1em;
+            /* overflow-wrap: break-word;
+            white-space: wrap;
+            text-overflow: ellipsis; */
+            word-break: break-word;
+        }
+        
+        .col_3 p a{
+            color: white;
+            background-color: blue;
+        }
+        .col_3 p a:hover{
+            color: white;
+            background-color: black;
+        }
+        /*CANVAS BACKGROUND*/
+         #myVideo{
+            z-index: 2;
+            position: relative;
+            right: 0;
+            bottom: 0;
+            max-width: 100%;
+            min-height: 100%;
+        }
+        
+        figure, video{
+            width: 100%;
+            height: auto;
+            position:relative;
+            z-index: -10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        figure{
+            margin: 2em 0 2em 0;
+        }
+        canvas , #myCanvas{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #bg_img_alt , #bg_img_ample{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        #bg_img_alt{
+            max-width: 100%;
+            display: flex;
+        }
+        #bg_img_ample img{  
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+        #bg_img_alt img{
+            width: 32vw;
+            height: auto;
+            overflow: hidden;
+        }
+        @media only screen and (max-width: 1280px) {
+            /*LOGO*/
+            header{
+                padding: 0;
+                margin: 0;
+                background-color: none;
+                width: 100%;
+                justify-content: right;
+            }
+            header hgroup{
+                color: black;
+            }
+            /*MENU*/
+            form{
+                display: flex;
+                overflow: none;
+            }
+            #mySelect{
+                width: 100%;
+                justify-content: center;
+                position: relative;    
+                overflow: none;
+            }
+            /*GENERAL*/
+            #texxt{
+                margin: 10em 0 0 0;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            .wrap {
+                width: 90%;
+                left: 0;
+                right: 0;
+                padding-top: 1em;
+                background-color: black;
+            }
+            .project{
+                margin: 0 2em 0 0;
+                padding: 2em 0 .6em 0;
+                color: white;
+                width: 100%;
+            }
+            .wrap h2{
+                width: 100%;
+                color: white;
+            }
+            .wrap h3{
+                color: white;
+            }
+            #about_pc p, #about_pe p, #about_pcast p{
+                color: white;
+            }
+            .hola p{
+                color: white;
+            }
+            ul li{
+                color: black;
+            }
+            #bg_img_alt img, #bg_img_ample img{
+                width: 100%;
+                object-fit: cover;
+                height: auto;
+                overflow: hidden;
+            }
+            .col_3 p, .col_3 h4{
+                color: white;
+            }
+        }
+        @media only screen and (max-width: 900px) {
+            header{
+                right: 0;
+                top: 0;
+                flex-direction: column;
+                align-items: flex-end;
+                display: flex;
+                text-align: center;
+                justify-content: right;
+                font-size: 1.4em;
+            }
+            hgroup{
+                width: 150px;
+            }
+            header hgroup:last-child{
+                padding: 0 .1em 0 0;
+            }
+            #texxt{
+                margin: 0;
+                padding: 0;
+            }
+            .project{
+                padding: 2em 0 .6em 0;
+                font-size: 3.5em;
+                color: black;
+            }
+            .wrap{
+                width: 90%;
+                margin: 9em 0 0 0;
+                background-color: transparent;
+            }
+            .wrap h2, .wrap h3{
+                color: black;
+            }
+            #texxt footer p{
+                width: 100%;
+                color: black;
+            }
+            #about_pc p, #about_pe p, #about_pcast p{
+                width: 100%;
+                color: black;
+            }
+            .col_3{
+                background-color: white;
+            }
+
+            .col_3 p, .col_3 h4{
+                width: 100%;
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <a href="index.html">
+            <header onclick="fons()">
+                <hgroup id="nom">
+                    <h1>M</h1>
+                    <h2>a</h2>
+                    <h3>g</h3>
+                    <h4>d</h4>
+                    <h5>a</h5>
+                </hgroup>
+                <hgroup id="cognom">
+                    <h1>A</h1>
+                    <h2>r</h2>
+                    <h3>q</h3>
+                    <h4>u</h4>
+                    <h5>e</h5>
+                    <h6>s</h6>
+                </hgroup>
+            </header></a>
+        <form>
+            <select id="mySelect" onchange="myFunction(this)" size="12">
+                <optgroup label="---">
+                    <option value="0">hola!</option>
+                    <option value="1">hi!</option>
+                    <option value="2">¡hola!</option>
+                </optgroup>
+                <optgroup label="///">
+                    <option value="3">Els nostres cossos</option>
+                    <option value="4">Fachada Media</option>
+                    <option value="5">La revolta del processing</option>
+                </optgroup>
+                <optgroup label="\\\">
+                    <option value="6">contact</option>
+                </optgroup>
+            </select>
+        </form>
+        <div id="texxt">
+            
+        </div>
+    </div>
+    <!-- <figure id='intro'><img src='img/jo_3.jpg' alt=''></figure> -->
+    <script>
+        document.body.onload = function() {myFunction2()};
+         function myFunction2() {
+             document.getElementById('texxt').innerHTML = "<canvas id='myCanvas'></canvas>";
+         }
+        function myFunction(el) {
+            var info = [
+                "<div class='wrap hola'><h2>Hola!</h2><div id='about_pc'><p>sóc Magda Arques artista, visualista i professora a l’<a href='https://www.easdalcoi.es/'>EASDAlcoi</a>, Escola d’Art i Superior de Disseny d’Alcoi.</p><p>La meua pràctica artístca em porta treballar junt a dissenyadores i artistes sonors i/o visuals bé per generar projectes conjunts o donar suport als propis.</p><p>Es basa en la utilització dels llenguatges digitals per generar imatge i qüestionar la imatge en ella mateixa. Actualment els meus treballs artístics estan en el camp dels visuals, el que m’interessa és la creació visual a partir del codi. Els llenguatges en els quals treballe son processing, p5js i hydra. Actualment els meus projectes versen a partir del visual com a acte performatiu i visual.</p><p>Com a professora treballe a l’Escola d’Art i Superior de Disseny d’Alcoi, en la qual treballe com a docent i com a Designer Manager, en la gestió de la imatge de la web. A les classes treballem la generació d’imatge en moviment, la creació gràfica digital a partir de la programació creativa, el disseny de sistemes visuals, la creació d’interfícies i el prototipat amb figma.</p><p>Un plaer. Gràcies</p></div></div>",                    // option 0
+                "<div class='wrap hola'><h2>Hi,</h2><div id='about_pe'><p>I’m Magda Arques artist, visualist and teacheer at <a href='https://www.easdalcoi.es/''>EASDAlcoi</a>, Fine Art School and Design in Alcoi.</p><p>My artistic practice push me to work together around other designers and audio artist and/or visualists. We generate projects togethers or to effort their own projects.</p><p>The visualist work is based in the use of digital languagues to generate image and throught them we be able to make questions about itself.</p><p>Nowadays, to generate visual and graphic image we use digital languages thought the code, it’s like to be a visual poet. The languages that I have used to create are processing, p5js and hydra.This is how I shape my visuals projects like a performative and visual events and installations.</p><p>As a teacher, in Higher Education Studies in the speciality of Graphic Design, working on the generation of moving images, digital creation from creative programming and frontend from HTML, CSS i JS starting from the design of flexible visual systems, the creation of interfaces and their prototype.</p><p>Thanks, see you.</p></div></div>",                                                            // option 1
+                "<div class='wrap hola'><h2>Hola,</h2><div id='about_pcast'><p>soy Magda Arques artista, visualista y profesora en la <a href='https://www.easdalcoi.es/''>EASDAlcoi</a>, Escuela de Arte y Superior de Diseño de Alcoi.</p><p>Mi práctica artística me lleva a trabajar junto a diseñadoras y artistas sonoros y/o visuales bien para generar proyectos conjuntos o dar apoyo a los propios.</p><p>El trabajo como visualista se basa en el uso de los lenguajes digitales para generar imagen y cuestionar la imagen en ella misma. Actualmente mis trabajos estan en el campó de los visuales, aquello que me interesa es la creación visual a partir del código. Los lenguajes a partir de los que creo son processing, p5js e hydra. Así es como doy forma a mis proyectos visuales como eventos e instalaciones performativas y visuales.</p><p>Como docente enseño en estudios Superiores de Diseño en la especialidad de Diseño gráfico trabajando la generación de la imagen en movimiento, la creación digital a partir de la programación creativa i frontend a partir del html, css y js. A partir del diseño de sistemas visuales flexibles, la creación de interfaces y su prototipo.</p><p>Saludos. Gracias.</p></div></div>",                        // option 2
+                "<div class='wrap'><h2 class='project'>Els nostres cossos</h2><h3>Transmedia installation</h3><figure id='bg_img_ample'><img src='img/elsnostrescossos/instalacio_3.jpeg'></figure><figure' id='bg_img_ample'><img src='img/elsnostrescossos/instalacio_1.jpeg'></figure><figure id='bg_img_ample'><img src='img/elsnostrescossos/instalacio_2.jpeg'></figure><section class='col_3'><div class='cat'><h4>[CAT]</h4><p>Residència artística en el Museu de la Universitat d’Alacant, MUA, 2021. Es va realitzar una instal·lació que consta de l’<a href='https://soundcloud.com/user-836145603/sets/els-nostres-cossos'>escolta</a> i la percepció del propi cos descrita per Amparo Camps, activista i membre del col·lectiu de diversitat funcional, AVANZAR, així com d’una <a href='https://magdaarques.github.io/elsnostrescossos/'>web</a> com a repositori i procés de creació de l’obra durant dos setmanes de creació.</p><p> El modelat i la creació en 3d dels elements a intervindre en l’espai amb material de PLA que generen un espai de connexions i estructures orgàniques a partir d’entrellaçar els cossos utilitzant el mateix material</p></div><div class='cast'><h4>[CAST]</h4><p>Residencia artística en el Museo de la Universidad de Alicante, MUA, 2021. Se realizó una instalación que constaba de la <a href='https://soundcloud.com/user-836145603/sets/els-nostres-cossos'>escucha</a> y la percepción sobre el su propio cuerpo descrita por Amparo Camps, activiasta y miembro del colectivo de diversidad funcional, AVANZAR. Así como de una <a href='https://magdaarques.github.io/elsnostrescossos/'>web</a> que hace la función de repositorio y memoria del proceso de creación de la obra durante las dos semanas de creación.</p><p>El modelado y la creación en 3d de los elementos que se intervinieron en el espacio con material de PLA que genera un espacio de conexiones y estructuras orgánicas a partir de entrelazar los cuerpos utilizan el mismo material.</p></div><div class='eng'><h4>[ENG]</h4><p>Artistic residency at the Museum of the University of Alicante, MUA, 2021. To create an installation consisting of the<a href='https://soundcloud.com/user-836145603/sets/els-nostres-cossos'> listen</a> and the perception of one's own body described by Amparo Camps, activist and member of the functional diversity collective, AVANZAR. A. And a <a href='https://magdaarques.github.io/elsnostrescossos/'>web</a> as a repository and process of creating the work for two weeks.</p><p>The 3D modeling and creation of the elements to intervene in the space with PLA material that generate a space of connections and organic structures from intertwining the bodies using the same material.</p></div><section></div>",          // option 3
+                "<div class='wrap'><h2 class='project'>Fachada Media</h2><h3>Video generated by creative coding</h3><figure><video autoplay muted loop id='myVideo'><source src='img/fachadamedia/AFM2023_Magda21080.mp4' type='video/mp4'></video></figure><section class='col_3'><div class='cat'><h4>[CAT]</h4><p>Vídeo generat amb Processing, en una Residència creativa en la Fachada Media en Satagossa, 2022.</p><p>L’obra té com a objectiu entendre l’espai arquitectònic com un espai sensitiu, on la matèria de la pantalla passa a ser un joc de ritmes visuals i un espai on el nom de la peça Conchi Arnal Caro vol retre tribut a una de les lesbianes històriques de Saragossa, aprofitant la visibilitat de l’arquitectura i l’espai d’aquesta com lloc de memòria col·lectiva.</p><p><a href='https://www.youtube.com/watch?v=HRS3itjN8T8'>video</a></p></div><div class='cast'><h4>[CAST]</h4><p>Video generado con Processing, Residencia Creativa en Etopia en el proyecto Fachada Media en Zaragoza, 2022.</p><p>La pieza tiene como objetivo entender el espacio arquitectónico y la fachada como un espacio sensitivo, donde la materia de la pantalla pasa a ser un juego de ritmos visuals y un espacio donde el nombre de la pieza Cochi Arnal Caro quiere ser memoria de una de las Lesbianas históricas de Aragón, aprofechando la visibilidad de la arquitectura y el espacio com un espacio de memoria colectiva.</p><p><a href='https://www.youtube.com/watch?v=HRS3itjN8T8'>video</a></p></div><div class='eng'><h4>[ENG]</h4><p>Video generated with Processing, in a creative Residence at Fachada Media in Satagossa, 2022.</p><p>The work aims to understand the architectural space as a sensitive space, where the matter of the screen becomes a game of visual rhythms and a space where the name of the piece Conchi Arnal Caro wants to pay tribute to one of Zaragoza's historical Lesbians, taking advantage of the visibility of the architecture and its space as a place of collective memory.</p><p><a href='https://www.youtube.com/watch?v=HRS3itjN8T8'>video</a></p></div><section></div>",               // option 4
+                "<div class='wrap'><h2 class='project'>La revolta del processing</h2><h3>Made by creative coding and a pen plotter</h3><figure id='bg_img_alt'><img src='img/larevoltadelprocessing/larevoltadelprocessing_v1.jpg'></figure><figure id='bg_img_alt'><img src='img/larevoltadelprocessing/larevoltadelprocessing_v2.jpg'></figure><figure id='bg_img_alt'><img src='img/larevoltadelprocessing/larevoltadelprocessing_v3.jpg'></figure><section class='col_3'><div class='cat'><h4>[CAT]</h4><p>Projecte desenvolupat conjuntament amb Xelo Garrigós dissenyadora de tipografies, en la qual hem desenvolupat una sèrie de peces gràfiques que actualment estan en procés a partir del manifiesto de la <a href=‘https://feministinternet.org/’>internet feminista</a></p><p>El procés de treball consta de la creació d'uns grafismes generats amb Processing que alhora que anem composant en l'espai conjuntament a través de la utilització de la ferramenta AxiDraw i el Inkscape</p><p>Aquestes obres estan publicades a la publicació num 40 de Slanted 'Experimental type', 2023</p></div><div class='cat'><h4>[CAST]</h4><p>Proyecto desarrollado conjuntamente con Xelo Garrigó diseñadora de tipografías, en la cual hemos desarrolado una serie de piezas gra´ficas que actualmente estan en proceso a partir del manifiesto de la <a href=‘https://feministinternet.org/’> internet feminista</a></p><p>El proceso de trabajo consta de la reación de unos grafismos generados con Processing que a su fez vamos componiendo en el espacio conjuntamente a través del autilización dela herramienta Axidraw y del Inkscape</p><p>Piezas publicadas en el num 40 de Slanted ‘Experimental type’, 2023</p></div><div class='eng'><h4>[ENG]</h4><p>Project jointly developed with typeface designer Xelo Garrigós, in which we have developed a series of graphic pieces that are currently in process based on the texts of the <a href='https://feministinternet.org/'>internet feminist</a></p><p>The work process consists of the creation of graphics generated with Processing which at the same time we compose in space together through the use of the AxiDraw tool and Inkscape</p><p>These works are published in publication num 40 of Slanted 'Experimental type', 2023</p></div><section></div>",                 // option 5
+                "<div class='wrap hola'><h2>Contact<h2><ul><li><a href='mailto:magdaarques@gmail.com'>magdaarques[at]gmail[dot]com</li><li><a href='https://www.instagram.com/magdaarques/'>[at]magdaarques</a></li></ul><footer><p>Made by @magdaarques with html, css, javascript and hydra in sublimetxt and host in github <3</p></footer></div>"
+            ];
+            var val = el.options[el.selectedIndex].value;
+            document.getElementById('texxt').innerHTML = info[val];
+        }
+        changeInfo(document.getElementById('mySelect'));
+    </script>
+    
+         <script>
+        // create a new hydra-synth instance
+        speed = .5
+        var hydra = new Hydra({
+        canvas: document.getElementById("myCanvas"),
+        detectAudio: false
+      })
+      s1.initImage("https://raw.githubusercontent.com/magdaarques/jo/master/img/jo_3.jpg")
+        src(o1,()=>a.fft[1]*10,2)
+            .modulate(osc(5,0.1,0.9).scale(1.001),()=>a.fft[0])
+        .out(o0)
+        src(o1)
+            .modulateHue(src(o0).scale(1.01),1)
+            .layer(osc(4,.1,2).modulateRepeat(src(s1).invert().scale(2,.3),.2,.8,.5).mask(shape(4,0.6,0.001).scrollY(({time}) => Math.sin(time) * .5)))
+        .out(o1)
+        render(o1)
+    </script>     
+</body>
+</html>
